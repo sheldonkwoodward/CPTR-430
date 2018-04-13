@@ -1,4 +1,5 @@
 # sheldon woodward
-# DATE
+# 4/13/18
 
-"""Docstring"""
+from river_crossing.Tree import *
+from river_crossing.DFS import *

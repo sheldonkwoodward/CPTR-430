@@ -3,6 +3,8 @@
 
 """Depth first search for the farmer-wolf-goat-cabbage river crossing problem."""
 
+from river_crossing import Tree
 
-class DFS:
+
+class DFS(Tree):
     pass
