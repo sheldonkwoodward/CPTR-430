@@ -1,5 +1,5 @@
-CPTR-430
-========
+CPTR 430 - Artificial Intelligence
+==================================
 A collection of code and projects from CPTR 430 - Artificial Intelligence.
 
 Installation
@@ -16,4 +16,3 @@ while in the project root:
 ::
 
   $ python river_crossing
-
