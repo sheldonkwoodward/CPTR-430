@@ -3,33 +3,34 @@
 
 """Tree of all farmer-wolf-goat-cabbage possibilities."""
 
-states = []
-
 
 class Tree:
-    def __init__(self, state=[False, False, False, False]):
+    states = []
+
+    def __init__(self, depth=0, state=None):
+        if state is None:
+            state = [False, False, False, False]
         # check for loop state
-        global states
-        states.append(state)
+        Tree.states.append(state)
+        self.depth = depth
         self.state = state
         self.nodes = []
 
         # generate next nodes
-        for i, s in enumerate(state):
+        for i in range(4):
             # generate state
-            new_state = state
-            new_state[0] = not new_state[0]
-            if i > 0:
+            new_state = state[:]
+            if i > 0 and new_state[0] == new_state[i]:
                 new_state[i] = not new_state[i]
+            new_state[0] = not new_state[0]
             # add to tree
             if not Tree.bad_state(new_state):
-                self.nodes.append(Tree(new_state))
+                self.nodes.append(Tree(depth + 1, new_state))
 
     @staticmethod
     def bad_state(state):
         # pre-existing state
-        global states
-        if state in states:
+        if state in Tree.states:
             return True
         # wolf alone with goat
         if state[0] != state[1] and state[1] == state[2]:
