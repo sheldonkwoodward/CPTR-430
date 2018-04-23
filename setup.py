@@ -8,7 +8,8 @@ setup(name='sw_cptr_430',
       packages=['river_crossing'],
       entry_points={
           'console_scripts': [
-              'river_crossing = river_crossing.__main__:main'
+              'river_crossing = river_crossing.__main__:main',
+              'three_puzzle = three_puzzle.__main__:main'
           ]
       },
       )
