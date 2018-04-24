@@ -8,7 +8,7 @@ class Tree:
     start_state = [3, 1, 2, None]
     goal_state = [1, 2, 3, None]
 
-    def __init__(self, state=None, depth=0):
+    def __init__(self, state=None, depth=0, inherited_cost=0):
         if state is None:
             self.state = Tree.start_state
         else:
@@ -16,6 +16,7 @@ class Tree:
         self.depth = depth
         self.matches = len([i for i, j in zip(self.state[:], Tree.goal_state) if i == j and i is not None])
         self.cost = 3 - self.matches + depth
+        self.inherited_cost = self.cost + inherited_cost
         self.nodes = []
 
     def __repr__(self):
@@ -49,7 +50,9 @@ class Tree:
                     if Tree.queue[next_tree_index].cost > t.cost:
                         next_tree_index = i
             elif method == 'bbrh':
-                pass
+                for i, t in enumerate(Tree.queue[:]):
+                    if Tree.queue[next_tree_index].inherited_cost > t.inherited_cost:
+                        next_tree_index = i
             print(' chs: ' + str(Tree.queue[0]))
             Tree.queue[next_tree_index].process(next_tree_index)
 
@@ -68,7 +71,7 @@ class Tree:
             i = new_state.index(None)
             new_state[i] = self.state[i - 2]
             new_state[i - 2] = self.state[i]
-            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1))
+            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1, inherited_cost=self.inherited_cost))
             # print('push: ' + str(Tree.queue[-1]))
             # print('   d: ' + str(Tree.queue[-1].depth))
             # print('   m: ' + str(Tree.queue[-1].matches))
@@ -80,7 +83,7 @@ class Tree:
             i = new_state.index(None)
             new_state[i] = self.state[i + 2]
             new_state[i + 2] = self.state[i]
-            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1))
+            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1, inherited_cost=self.inherited_cost))
             # print('push: ' + str(Tree.queue[-1]))
             # print('   d: ' + str(Tree.queue[-1].depth))
             # print('   m: ' + str(Tree.queue[-1].matches))
@@ -93,7 +96,7 @@ class Tree:
             i = new_state.index(None)
             new_state[i] = self.state[i + 1]
             new_state[i + 1] = self.state[i]
-            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1))
+            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1, inherited_cost=self.inherited_cost))
             # print('push: ' + str(Tree.queue[-1]))
             # print('   d: ' + str(Tree.queue[-1].depth))
             # print('   m: ' + str(Tree.queue[-1].matches))
@@ -105,7 +108,7 @@ class Tree:
             i = new_state.index(None)
             new_state[i] = self.state[i - 1]
             new_state[i - 1] = self.state[i]
-            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1))
+            Tree.queue.append(Tree(state=new_state[:], depth=self.depth + 1, inherited_cost=self.inherited_cost))
             # print('push: ' + str(Tree.queue[-1]))
             # print('   d: ' + str(Tree.queue[-1].depth))
             # print('   m: ' + str(Tree.queue[-1].matches))
