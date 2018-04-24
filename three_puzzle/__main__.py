@@ -3,11 +3,11 @@
 
 """Main function for three_puzzle problem."""
 
-from three_puzzle import Puzzle, Tree
+from three_puzzle import BFS
 
 
 def main(args=None):
-    t = Tree()
+    t = BFS()
     t.bfs()
 
 
