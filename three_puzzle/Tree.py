@@ -15,6 +15,12 @@ class Tree:
             self.state = state
         self.depth = depth
         self.matches = len([i for i, j in zip(self.state[:], Tree.goal_state) if i == j and i is not None])
+        self.distance = self.depth
+        for t in self.state:
+            if self.state is None:
+                continue
+            self.distance += abs(self.state.index(t) % 2 - Tree.goal_state.index(t) % 2) + \
+                             abs(self.state.index(t) / 2 - Tree.goal_state.index(t) / 2)
         self.cost = 3 - self.matches + depth
         self.inherited_cost = self.cost + inherited_cost
         self.nodes = []
@@ -38,10 +44,9 @@ class Tree:
         # print('   q: ' + str(Tree.queue))
         # print()
         while len(Tree.queue) > 0:
+            input()
             next_tree_index = 0
-            if method == 'bfs':
-                pass
-            elif method == 'bbpc':
+            if method == 'bbpc':
                 for i, t in enumerate(Tree.queue[:]):
                     if Tree.queue[next_tree_index].depth > t.depth:
                         next_tree_index = i
@@ -53,7 +58,11 @@ class Tree:
                 for i, t in enumerate(Tree.queue[:]):
                     if Tree.queue[next_tree_index].inherited_cost > t.inherited_cost:
                         next_tree_index = i
-            print(' chs: ' + str(Tree.queue[0]))
+            elif method == 'a':
+                for i, t in enumerate(Tree.queue[:]):
+                    if Tree.queue[next_tree_index].distance > t.distance:
+                        next_tree_index = i
+            print(' chs: ' + str(Tree.queue[next_tree_index]))
             Tree.queue[next_tree_index].process(next_tree_index)
 
     def process(self, q_index):
