@@ -1,6 +1,8 @@
 # sheldon woodward
 # 4/23/18
 
+"""Tree with different searches for three_puzzle."""
+
 
 class Tree:
     loops = []
