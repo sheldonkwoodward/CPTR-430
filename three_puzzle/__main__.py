@@ -8,7 +8,7 @@ from three_puzzle import Tree
 
 def main(args=None):
     t = Tree()
-    t.search(method='bfs')
+    t.search(method='bbpc')
 
 
 if __name__ == '__main__':

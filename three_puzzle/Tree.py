@@ -37,19 +37,21 @@ class Tree:
         # print('   q: ' + str(Tree.queue))
         # print()
         while len(Tree.queue) > 0:
+            next_tree_index = 0
             if method == 'bfs':
-                print(' chs: ' + str(Tree.queue[0]))
-                Tree.queue[0].process(0)
+                pass
+            elif method == 'bbpc':
+                for i, t in enumerate(Tree.queue[:]):
+                    if Tree.queue[next_tree_index].depth > t.depth:
+                        next_tree_index = i
             elif method == 'bbsh':
-                next_tree_index = 0
                 for i, t in enumerate(Tree.queue[:]):
                     if Tree.queue[next_tree_index].cost > t.cost:
                         next_tree_index = i
-                print(' chs: ' + str(Tree.queue[next_tree_index]))
-                # print('   d: ' + str(Tree.queue[next_tree_index].depth))
-                # print('   m: ' + str(Tree.queue[next_tree_index].matches))
-                # print('   c: ' + str(Tree.queue[next_tree_index].cost))
-                Tree.queue[next_tree_index].process(next_tree_index)
+            elif method == 'bbrh':
+                pass
+            print(' chs: ' + str(Tree.queue[0]))
+            Tree.queue[next_tree_index].process(next_tree_index)
 
     def process(self, q_index):
         # check if solved
