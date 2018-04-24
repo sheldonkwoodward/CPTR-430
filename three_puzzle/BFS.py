@@ -5,10 +5,11 @@
 class BFS:
     loops = []
     queue = []
+    start_state = [3, 1, 2, None]
 
     def __init__(self, state=None, depth=0):
         if state is None:
-            self.state = [3, 1, 2, None]
+            self.state = BFS.start_state
         else:
             self.state = state
         self.depth = depth
@@ -17,7 +18,7 @@ class BFS:
     def __repr__(self):
         return str(self.state)
 
-    def bfs(self):
+    def search(self):
         BFS.loops = []
         BFS.queue = []
         BFS.queue.append(self)

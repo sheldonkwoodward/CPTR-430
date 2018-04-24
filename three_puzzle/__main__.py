@@ -3,12 +3,12 @@
 
 """Main function for three_puzzle problem."""
 
-from three_puzzle import BFS
+from three_puzzle import BFS, BBPastCost
 
 
 def main(args=None):
-    t = BFS()
-    t.bfs()
+    t = BBPastCost()
+    t.search()
 
 
 if __name__ == '__main__':
