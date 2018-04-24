@@ -16,3 +16,11 @@ while in the project root:
 ::
 
   $ python river_crossing
+
+Three Puzzle Problem
+--------------------
+The code for this problem is in the *three_puzzle* package. Execute the code by running the following commands while
+in the project root:
+::
+
+  $ python three_puzzle

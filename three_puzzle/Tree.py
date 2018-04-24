@@ -104,7 +104,8 @@ class Tree:
                 return result
         return 'No solution'
 
-    def reset(self):
+    @staticmethod
+    def reset():
         Tree.loops = []
         Tree.queue = []
         Tree.iterations = 0
