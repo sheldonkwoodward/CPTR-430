@@ -1,7 +1,7 @@
 # sheldon woodward
 # 4/13/18
 
-"""BBPastCost of all farmer-wolf-goat-cabbage possibilities."""
+"""Tree of all farmer-wolf-goat-cabbage possibilities."""
 
 
 class FWGCTree:

@@ -2,4 +2,4 @@
 # DATE
 
 from .BFS import BFS
-from .BBPastCost import BBPastCost
+from .Tree import Tree
