@@ -7,7 +7,7 @@ from send_more_money import Crpyto
 
 
 def main(args=None):
-    Crpyto('SEND', 'MORE', 'MONEY').solve()
+    Crpyto('SEND', 'MORE', 'ONEY').solve()
 
 
 if __name__ == '__main__':
