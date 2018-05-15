@@ -17,6 +17,14 @@ while in the project root:
 
   $ python river_crossing
 
+SEND+MORE=MONEY Problem
+-----------------------
+The code for this problem is in the *send_more_money* package. Execute the code by running the following commands
+while in the project root:
+::
+
+  $ python send_more_money
+
 Three Puzzle Problem
 --------------------
 The code for this problem is in the *three_puzzle* package. Execute the code by running the following commands while
